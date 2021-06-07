@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>learn fragment</title>
+</head>
+<body>
+
+<!-- フラグメント名は my-fragment -->
+<div class="my-fragment-class" th:fragment="my-fragment(myMap)">
+    <input class="form-control" type="text" th:field="${myMap.name}" th:value="${myMap.name}"/>
+    <input class="form-control" type="text" th:field="${myMap.message}" th:value="${myMap.message}"/>
+</div>
+
+</body>
+</html>
