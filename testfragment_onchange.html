@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>learn fragment</title>
+</head>
+<body>
+
+<!-- フラグメント名は my-fragment -->
+<div class="my-fragment-class" th:fragment="my-fragment(myMap)">
+    <!-- <input class="form-control" type="text" th:field="${myMap.name}" th:value="${myMap.name}"/>
+    <input class="form-control" type="text" th:field="${myMap.message}" th:value="${myMap.message}"/>
+    <input class="form-control" type="text" th:field="${myMap.name}" th:value="${myMap.name}"/>
+    <input class="form-control" type="text" th:field="${myMap.message}" th:value="${myMap.message}"/> -->
+    <input class="form-control" type="text" th:field="${myMap.name}" th:value="${myMap.name}"/>
+    <input class="form-control" type="text" th:field="${myMap.message}" th:value="${myMap.message}"/>
+    <input class="form-control" type="text" th:value="${myMap.name}"/>
+    <input class="form-control" type="text" th:value="${myMap.message}"/>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">gender</label>
+        <div class="col-sm-8">
+            <select name="ddlmalefemale">
+                <option 
+                    th:each="sex : ${maleFemale}" 
+                    th:value="${sex.key}" 
+                    th:text="${sex.value}"
+                    th:selected="${sex.key == myMap.selectDdl}"
+                ></option>
+            </select>
+        </div>
+    </div>
+    <div th:each="item : ${maleFemale}" class="form-check-inline" th:onchange="mapPassTestMethod([[${maleFemale}]])">
+        <!-- ポイント2 -->
+        <input type="radio"  name="radioMF" class="form-check-input" th:text="${item.value}" th:value="${item.key}" th:checked="${myMap.selectDdl}">
+    </div>
+    <div class="checkbox">
+        <label>
+          <input type="checkbox" th:text="${myMap.checkBoxTest}" th:checked="${myMap.checkBoxTest}"/>
+        </label>
+        <label>
+            <input type="checkbox" th:text="${myMap.checkBoxTest}" th:checked="${myMap.checkBoxTest}"/>
+          </label>
+      </div>
+</div>
+
+</body>
+</html>
